@@ -1,3 +1,4 @@
+import { FC, useEffect, useState } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,9 +9,8 @@ import {
   Legend,
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
-import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
 import 'chart.js/auto'
+import { Box, Typography } from '@mui/material';
 
 ChartJS.register(
   CategoryScale,
@@ -25,7 +25,6 @@ export const options = {
   plugins: {
     title: {
       display: true,
-      text: 'Transações',
     },
   },
   responsive: true,
@@ -45,20 +44,18 @@ export const options = {
 };
 
 
-export const ChartStocks: any = () => {
+export const ChartStocks: FC<any> = ({ transitions }) => {
   const [data, setData] = useState({
     labels: '',
     datasets: []
   });
 
-  const transitions = useSelector((state: any) => state.stocks?.transitions);
 
   useEffect(() => {
 
     setData({
       labels: transitions?.map((transition: any) => transition?.operationDate as any),
       datasets: [
-
         {
           type: 'bar' as const,
           label: 'Quantidade Média',
@@ -107,8 +104,33 @@ export const ChartStocks: any = () => {
   }, [transitions]);
 
   return (
-    <div>
-      <Chart type='bar' options={options} data={data as any} />;
-    </div>
+    <Box
+      sx={{
+        margin: 3
+      }}
+    >
+      <Typography>
+        Transações
+      </Typography>
+      <Chart type='bar' options={options} data={data as any} />
+      <Box
+      sx={{
+        marginTop: 4,
+        marginX: 2,
+        textAlign: 'start'
+      }}>
+        <Typography>
+          Dicas para utilizar o gráfico:
+        </Typography>
+        <ul>
+          <li>
+            Você pode clicar em um dos rótulos para retirá-lo do gráfico, podendo facilitar a leitura. Para retornar o rótulo, basta clicar nele novamente.
+          </li>
+          <li>
+            Os valores de "Resultado Auferido", "Prejuízo Acumulado" e "Imposto de Renda" serão apresentados somente em operações de venda.
+          </li>
+        </ul>
+      </Box>
+    </Box>
   )
 }

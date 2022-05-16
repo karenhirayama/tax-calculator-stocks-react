@@ -1,6 +1,7 @@
 import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { DeleteOperations } from '../DeleteOperations/DeleteOperations';
+import { OperationProps } from '../../Interfaces';
 
 
 export const TableStrocks = () => {
@@ -16,6 +17,7 @@ export const TableStrocks = () => {
                 <Table>
                     <TableHead>
                         <TableRow>
+                            <TableCell align='center'>Código da ação</TableCell>
                             <TableCell align="center">Data da operação</TableCell>
                             <TableCell align="center">Operação</TableCell>
                             <TableCell align="center">Preço (R$)</TableCell>
@@ -24,13 +26,15 @@ export const TableStrocks = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {operations?.map((operation: any, index: any) => (
+                        {operations?.map(({ stockCode, operationDate, operationType, price, quantity, brokerageFee
+                        }: OperationProps, index: number) => (
                             <TableRow key={index}>
-                                <TableCell align="center">{operation.operationDate}</TableCell>
-                                <TableCell align="center">{operation.operationType === 'buy' ? "Compra" : "Venda"}</TableCell>
-                                <TableCell align="center">{operation.price}</TableCell>
-                                <TableCell align="center">{operation.quantity}</TableCell>
-                                <TableCell align="center">{operation.brokerageFee}</TableCell>
+                                <TableCell align="center">{stockCode}</TableCell>
+                                <TableCell align="center">{operationDate}</TableCell>
+                                <TableCell align="center">{operationType === 'buy' ? "Compra" : "Venda"}</TableCell>
+                                <TableCell align="center">{price}</TableCell>
+                                <TableCell align="center">{quantity}</TableCell>
+                                <TableCell align="center">{brokerageFee}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

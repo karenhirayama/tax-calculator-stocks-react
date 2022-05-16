@@ -1,3 +1,14 @@
+import { OperationProps, TransitionsProps } from "../../Interfaces";
+
+export const addStock = (newStock: string) => {
+    return (dispatch: any) => {
+        dispatch({
+            type: "ADD_STOCK",
+            payload: newStock
+        })
+    }
+}
+
 export const addOperation = (newOperation: any) => {
     return (dispatch: any) => {
         dispatch({
@@ -15,16 +26,18 @@ export const deleteAllOperations = () => {
     };
 };
 
-export const firstTransition = (newTransition: any) => {
+export const firstTransition = ({ stockCode, operationDate, price, quantity, brokerageFee
+}: OperationProps) => {
     return (dispatch: any) => {
-        const newAvaregaPrice = (((newTransition.price * newTransition.quantity) + newTransition.brokerageFee) / (newTransition.quantity));
+        const newAvaregaPrice = (((price * quantity) + brokerageFee) / (quantity));
 
-        const newAvaregaQuantity = (newTransition.quantity);
+        const newAvaregaQuantity = (quantity);
 
-        const newCapitalGains = (newTransition.price * newTransition.quantity);
+        const newCapitalGains = (price * quantity);
 
         const resultOfFirstTransition = {
-            operationDate: newTransition.operationDate,
+            stockCode: stockCode,
+            operationDate: operationDate,
             averagePrice: newAvaregaPrice,
             averageQuantity: newAvaregaQuantity,
             capitalGains: newCapitalGains,
@@ -40,7 +53,7 @@ export const firstTransition = (newTransition: any) => {
     };
 };
 
-export const calculationBuyStocks = (lastTransition: any, newTransition: any) => {
+export const calculationBuyStocks = (lastTransition: TransitionsProps, newTransition: OperationProps) => {
     return (dispatch: any) => {
         const newAvaregaPrice = (((lastTransition.averagePrice * lastTransition.averageQuantity) + (newTransition.price * newTransition.quantity) + newTransition.brokerageFee) / (lastTransition.averageQuantity + newTransition.quantity));
 
@@ -49,6 +62,7 @@ export const calculationBuyStocks = (lastTransition: any, newTransition: any) =>
         const newCapitalGains = (lastTransition.capitalGains + (newTransition.price * newTransition.quantity));
 
         const resultOfBuy = {
+            stockCode: lastTransition.stockCode,
             operationDate: newTransition.operationDate,
             averagePrice: newAvaregaPrice,
             averageQuantity: newAvaregaQuantity,
@@ -65,7 +79,7 @@ export const calculationBuyStocks = (lastTransition: any, newTransition: any) =>
     };
 };
 
-export const calculationSellStocks = (lastTransition: any, newTransition: any) => {
+export const calculationSellStocks = (lastTransition: TransitionsProps, newTransition: OperationProps) => {
     return (dispatch: any) => {
         const newEarned = (((newTransition.price - lastTransition.averagePrice) * newTransition.quantity) - newTransition.brokerageFee);
 
@@ -84,6 +98,7 @@ export const calculationSellStocks = (lastTransition: any, newTransition: any) =
         const newCapitalGains = (lastTransition.capitalGains + (newTransition.price * newTransition.quantity) - newAccumulatedLoss - newIncomeTax);
 
         const resultOfSell = {
+            stockCode: lastTransition.stockCode,
             operationDate: newTransition.operationDate,
             averagePrice: lastTransition.averagePrice,
             averageQuantity: newAvaregaQuantity,
@@ -99,3 +114,4 @@ export const calculationSellStocks = (lastTransition: any, newTransition: any) =
         });
     };
 };
+

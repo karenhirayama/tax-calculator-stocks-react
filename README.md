@@ -8,6 +8,8 @@ Para a construção da aplicação, foram utilizados:
 
 [ReactJS](https://pt-br.reactjs.org/)
 
+[Redux](https://redux.js.org/)
+
 [React ChartJS-2](https://react-chartjs-2.js.org/)
 
 [Material-UI](https://material-ui.com/)

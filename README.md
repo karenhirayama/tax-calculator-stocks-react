@@ -17,10 +17,12 @@ Para a construção da aplicação, foram utilizados:
 
 ## Iniciar a aplicação
 
-Para iniciar o projeto, é necessário clonar o projeto e possuir o [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/).
+Para iniciar o projeto, é necessário clonar o projeto e possuir o [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/). Os passos a seguir serão utilizando [yarn].
 
-### `yarn start` ou `npm start`  
+### `yarn install`
 
-Execute no terminal `yarn start` e quando a aplicação estiver rodando, acesse o link: [http://localhost:3000](http://localhost:3000)
+Execute no terminal `yarn install` para instalar o `node-modules` contendo os arquivos que vão ajudar na construção da aplicação. 
 
+### `yarn start`
 
+Execute no terminal `yarn start` e quando a aplicação estiver rodando, acesse o link: [http://localhost:3000](http://localhost:3000).

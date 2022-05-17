@@ -1,3 +1,3 @@
-export {default as store} from './Store/store';
-export {default as reducerStock} from './Reducers/stocksReducer';
-export * from './Actions/stocksActions';
+export {default as store} from './store/store';
+export {default as reducerStock} from './reducers/stocksReducer';
+export * from './actions/stocksActions';

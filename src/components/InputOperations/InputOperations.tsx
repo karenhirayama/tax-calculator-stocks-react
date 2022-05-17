@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from "react"
 import FormControl from '@mui/material/FormControl';
 import { useDispatch, useSelector } from "react-redux";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import { addOperation, addStock, calculationBuyStocks, calculationSellStocks, firstTransition } from "../../Redux";
+import { addOperation, addStock, calculationBuyStocks, calculationSellStocks, firstTransition } from "../../redux";
 import { styleInput, styleModal } from "../../Styles";
 import { ButtonComponent } from "../ButtonComponent";
 

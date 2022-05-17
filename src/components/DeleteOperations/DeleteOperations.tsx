@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { deleteAllOperations } from '../../Redux/Actions/stocksActions';
+import { deleteAllOperations } from '../../redux/actions/stocksActions';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { FC, useState } from 'react';
 import { ButtonComponent } from '../ButtonComponent';

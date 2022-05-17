@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import './App.css';
 import { Box, Typography } from '@mui/material';
-import { InputOperations } from './Components/InputOperations/InputOperations';
-import { TableStrocks } from './Components/TableStrocks/TableStrocks';
-import { ChartStocks } from './Components/ChartStocks/ChartStocks';
+import { InputOperations } from './components/InputOperations/InputOperations';
+import { TableStrocks } from './components/TableStrocks/TableStrocks';
+import { ChartStocks } from './components/ChartStocks/ChartStocks';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import DomainAddIcon from '@mui/icons-material/DomainAdd';
-import { ButtonComponent } from './Components/ButtonComponent';
+import { ButtonComponent } from './components/ButtonComponent';
 import { useSelector } from 'react-redux';
 
 const App = () => {

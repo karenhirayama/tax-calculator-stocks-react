@@ -1,6 +1,7 @@
 # IR - Bolsa de Valores
 
 O projeto visa calcular o imposto de renda que ocorrem quando há compra e venda de ações na bolsa de valores.
+Para ver o projeto: [IR - Bolsa de Valores](https://tax-stocks-br.web.app/)
 
 ## Tecnologias
 
@@ -26,3 +27,7 @@ Execute no terminal `yarn install` para instalar o `node-modules` contendo os ar
 ### `yarn start`
 
 Execute no terminal `yarn start` e quando a aplicação estiver rodando, acesse o link: [http://localhost:3000](http://localhost:3000).
+
+## Deploy 
+
+A implementação foi feita através do [Firebase](https://firebase.google.com/).
